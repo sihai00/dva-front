@@ -5,7 +5,3 @@ html, body, :global(#root) {
   box-sizing: border-box;
   background-color: #eee;
 }
-
-:global(.am-picker-popup-item){
-  color: #ffc107 !important;
-}
