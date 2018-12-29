@@ -2,13 +2,13 @@ var common = require('./src/common/common')
 
 const proxy =  {
   // 支持值为 Object 和 Array
-  [`GET /api/${common.baseURL}/users`]: { users: [1,2] },
+  [`GET ${common.baseURLApi}/users`]: { users: [1,2] },
 
   // 登陆
-  [`POST /api/${common.baseURL}/login`]: {id: 1},
+  [`POST ${common.baseURLApi}/login`]: {id: 1},
 
   // 个人信息
-  [`GET /api/${common.baseURL}/me`]: {
+  [`GET ${common.baseURLApi}/me`]: {
     id: 1,
     role: {
       id: 1,

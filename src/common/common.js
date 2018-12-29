@@ -12,14 +12,14 @@ const env = (() => {
 
   switch (process.env.NODE_ENV) {
     case 'development':
-      ENV.baseURL = `v1`;
+      ENV.baseURL = `/api/dev`;
       break
     default:
-      ENV.baseURL = process.env.API_ENV === 'dev' ? `v1` : `v`;
+      ENV.baseURL = process.env.API_ENV === 'dev' ? `/api/dev` : `/api/pro`;
       break
   }
 
-  ENV.baseURLApi = `api/${ENV.baseURL}`
+  ENV.baseURLApi = `${ENV.baseURL}/v1`
 
   return ENV
 })()

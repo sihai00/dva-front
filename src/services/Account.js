@@ -1,20 +1,23 @@
-import {post, get} from '../utils/request'
+import request from '../utils/request'
 
 export function login(params) {
-  return post({
+  return request({
     url: `/login`,
+    method: 'post',
     params
   })
 }
 
 export function getMe() {
-  return get({
+  return request({
     url: `/me`,
+    method: 'get'
   })
 }
 
 export function getUser() {
-  return get({
+  return request({
     url: `/users`,
+    method: 'get'
   })
 }
