@@ -24,7 +24,6 @@ const isAuth = (rest) => {
 
 /* eslint-disable react/prop-types */
 const ProtectedRoute = ({component, failureRedirect, ...rest}) => {
-  // console.log(Component, 'component')
   const authenticated = isAuth(rest)
   return (
     <Route {...rest} render={props => (
