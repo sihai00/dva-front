@@ -24,11 +24,12 @@ const isAuth = (rest) => {
 
 /* eslint-disable react/prop-types */
 const ProtectedRoute = ({component, failureRedirect, ...rest}) => {
+  // console.log(Component, 'component')
   const authenticated = isAuth(rest)
   return (
     <Route {...rest} render={props => (
       authenticated ? (
-        React.createElement(component().default, Object.assign(props, {
+        React.createElement(component, Object.assign(props, {
           name: rest.name,
           authority: rest.authority,
           params: getUrlParams()

@@ -5,8 +5,9 @@ import styles from './IndexPage.scss'
 class IndexPage extends Component {
   render() {
     return (
-      <div className={styles.page}>
-        index
+      <div>
+        <h1>index</h1>
+        <button onClick={() => this.props.history.push('/user')}>to user</button>
       </div>
     )
   }

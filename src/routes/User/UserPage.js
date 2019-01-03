@@ -5,7 +5,8 @@ class IndexPage extends Component {
   render() {
     return (
       <div>
-        user
+        <h1>user</h1>
+        <button onClick={() => this.props.history.push('/user/user1')}>to user</button>
       </div>
     )
   }

@@ -3,30 +3,30 @@ const menu = [
     name: '登录',
     path: 'login',
     isOpenRouter: true,
-    component: () => require('../routes/Login/LoginPage'),
-    model: () => require('../models/Account'),
+    component: () => import('../routes/Login/LoginPage'),
+    model: ['Account'],
   },
   {
     name: '主页',
-    component: () => require('../routes/Index/IndexPage')
+    component: () => import('../routes/Index/IndexPage')
   },
   {
     name: 'user',
     path: 'user',
-    component: () => require('../routes/User/UserPage'),
-    model: () => require('../models/User'),
+    component: () => import('../routes/User/UserPage'),
+    model: ['User'],
     children: [
       {
         name: 'user1',
         path: 'user1',
-        component: () => require('../routes/User/UserPage1'),
-        model: () => require('../models/User1'),
+        component: () => import('../routes/User/UserPage1'),
+        model: ['User1'],
         children: [
           {
             name: 'user2',
             path: 'user2',
-            component: () => require('../routes/User/UserPage2'),
-            model: () => require('../models/User2'),
+            component: () => import('../routes/User/UserPage2'),
+            model: ['User2'],
           }
         ]
       }
