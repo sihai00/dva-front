@@ -21,3 +21,4 @@
 8. loading
 9. 默认开启hash
 10. 默认使用antd-mobile
+11. 默认启用按需加载(react-loadable)
