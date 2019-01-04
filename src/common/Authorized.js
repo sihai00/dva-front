@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Redirect, Route } from 'dva/router'
 import { connect } from 'dva'
+import common from './common'
 import {getUrlParams} from '../utils/utils'
 
 const isAuth = (rest) => {
@@ -22,24 +23,27 @@ const isAuth = (rest) => {
   return bol
 }
 
+function handleRouter(router, props, component){
+  const authenticated = isAuth(router)
+
+  if (authenticated || router.isOpenRouter || !common.isAuth) {
+    return React.createElement(component, Object.assign(props, {
+      name: router.name,
+      authority: router.authority,
+      params: getUrlParams()
+    }))
+  } else {
+    return <Redirect to={{
+      pathname: router.failureRedirect,
+      state: {from: props.location}
+    }}/>
+  }
+}
+
 /* eslint-disable react/prop-types */
-const ProtectedRoute = ({component, failureRedirect, ...rest}) => {
-  const authenticated = isAuth(rest)
+const ProtectedRoute = ({component, ...router}) => {
   return (
-    <Route {...rest} render={props => (
-      authenticated ? (
-        React.createElement(component, Object.assign(props, {
-          name: rest.name,
-          authority: rest.authority,
-          params: getUrlParams()
-        }))
-      ) : (
-        <Redirect to={{
-          pathname: failureRedirect,
-          state: {from: props.location}
-        }}/>
-      )
-    )}/>
+    <Route {...router} render={props => handleRouter(router, props, component)}/>
   )
 }
 

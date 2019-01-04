@@ -1,8 +1,7 @@
 import React from 'react'
-import { Route, Switch, routerRedux } from 'dva/router'
+import { Switch, routerRedux } from 'dva/router'
 import Loadable from 'react-loadable'
 import Authorized from './common/Authorized'
-import common from './common/common'
 import routers from './common/router'
 const { ConnectedRouter } = routerRedux
 
@@ -31,16 +30,7 @@ function RouterConfig({ history, app }) {
       <Switch>
         {
           routers && routers.map((v, i) => {
-            if (!v) return null
-
-            const Component = dynamicWrapper(app, v.model, v.component)
-
-            // routes
-            if (v.isOpenRouter || !common.isAuth) {
-              return <Route key={i} path={v.path} exact component={Component}/>
-            } else {
-              return <Authorized key={i} exact {...Object.assign(v, {component: Component})}/>
-            }
+            return v ? <Authorized key={i} exact {...Object.assign(v, {component: dynamicWrapper(app, v.model, v.component)})}/> : null
           })
         }
       </Switch>
