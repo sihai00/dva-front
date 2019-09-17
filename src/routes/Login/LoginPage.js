@@ -43,7 +43,7 @@ class LoginPage extends Component {
       this.props.dispatch({
         type: 'account/login',
         payload: {
-          username: username.replace(/\s/g, ''), 
+          username: username.replace(/\s/g, ''),
           password
         }
       }).then(v => {

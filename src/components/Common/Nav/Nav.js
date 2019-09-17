@@ -21,11 +21,11 @@ class Nav extends Component {
           }}
           leftContent={isLeft ? <Icon type="left" /> : ''}
           rightContent={
-            isRight ? 
+            isRight ?
             isRight === true ?
             <Icon type="ellipsis" onClick={() => {
               history.push('/')
-            }}/> : 
+            }}/> :
             isRight :
             ''
           }

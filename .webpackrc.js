@@ -1,6 +1,17 @@
 const path = require('path')
 
 export default {
+  entry: {
+    app: './src/index.js',
+    vendor: [
+      'react',
+      'react-dom',
+      'redux',
+      'react-router-dom',
+      'react-redux',
+      'axios'
+    ],
+  },
   extraBabelPlugins: [
     ["import", { "libraryName": "antd-mobile", "libraryDirectory": "es", "style": "css" }]
   ],
@@ -13,5 +24,16 @@ export default {
   // manifest: {},
   html: {
     "template": "./src/index.ejs"
-  }
+  },
+  commons: [
+    {
+      names: ['vendor'],
+      minChunks: Infinity,
+      filename: 'vendor.bundle.js',
+    },
+    {
+      name: 'manifest',
+      minChunks: Infinity
+    }
+  ]
 }
